@@ -19,7 +19,7 @@ l_ply <- function(.data, .fun = NULL, ..., .progress = "none", .inform = FALSE,
   n <- length(pieces)
   if (n == 0) return(invisible())
 
-  if (.parallel && .progress != "none") {
+  if (.parallel && ! .progress %in% c("none", "progressr")) {
     message("Progress disabled when using parallel plyr")
     .progress <- "none"
   }
